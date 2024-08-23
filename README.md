@@ -46,8 +46,67 @@ In order to prepare the data, I did the following;
   - what are the highest reasons for customer calls ?
   - what is the time frame for customers call ?
 
- 
-[QUERY FOR CALL CENTER pdf.pdf](https://github.com/user-attachments/files/16650060/QUERY.FOR.CALL.CENTER.pdf.pdf)
+total calls
+~~~sql
+SELECT COUNT(`customer id`) As Total_Calls FROM practice_db.call_center;
+~~~
+
+avg csat score
+~~~sql
+SELECT AVG(`csat_score`) As Avg_csat_score FROM practice_db.call_center;
+~~~
+
+avg call duration
+~~~sql
+SELECT AVG(`call duration in minutes`) As Avg_call_duration FROM practice_db.call_center;
+~~~
+
+call trend
+~~~sql
+SELECT call timestamp, COUNT(`call timestamp`) As Call_Trend  FROM practice_db.call_center
+GROUP BY call_timestamp
+ORDER BY call_timestamp ASC;
+~~~
+
+call trend by city
+~~~sql
+SELECT city, COUNT(`call_center`) As Call_Trend_by_city  FROM practice_db.call_center
+GROUP BY city
+ORDER BY city ASC;
+~~~
+
+call trend by channel
+~~~sql
+SELECT channel, COUNT(`call_center`) As Call_Trend_by_channel  FROM practice_db.call_center
+GROUP BY channel;
+~~~
+
+call trend by state
+~~~sql
+SELECT state, COUNT(`call_center`) As Call_Trend_by_state  FROM practice_db.call_center
+GROUP BY state
+ORDER BY Call_Trend_By_State ASC;
+~~~
+
+reasons for calling
+~~~sql
+SELECT reason, COUNT(`call_center`) As Reason_For_Calling  FROM practice_db.call_center
+GROUP BY reason;
+~~~
+
+response time
+~~~sql
+SELECT response_time, COUNT(`call_center`) As Response_time  FROM practice_db.call_center
+GROUP BY response_time;
+~~~
+
+sentiment
+~~~sql
+SELECT sentiment, COUNT(`call_center`) As sentiment  FROM practice_db.call_center
+GROUP BY sentiment;
+~~~
+
+
 
  ## Findings
 
